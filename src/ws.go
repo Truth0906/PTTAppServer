@@ -8,13 +8,12 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-var addr = flag.String("addr", "localhost:8080", "http service address")
+var addr = flag.String("addr", "localhost:56358", "http service address")
 
 var upgrader = websocket.Upgrader{
 	//如果有 cross domain 的需求，可加入這個，不檢查 cross domain
 	CheckOrigin: func(r *http.Request) bool { return true },
 }
-
 
 func echo(w http.ResponseWriter, r *http.Request) {
 	c, err := upgrader.Upgrade(w, r, nil)
